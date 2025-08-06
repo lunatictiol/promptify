@@ -1,11 +1,12 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user.model.js';
 
-const ACCESS_SECRET = process.env.ACCESS_TOKEN_SECRET;
-const REFRESH_SECRET = process.env.REFRESH_TOKEN_SECRET;
+const ACCESS_SECRET = process.env.JWT_SECRET;
+const REFRESH_SECRET = process.env.JWT_REFRESH_SECRET;
 
 const auth = async (req, res, next) => {
   const authHeader = req.headers.authorization;
+  console.log(ACCESS_SECRET,REFRESH_SECRET)
 
   if (!authHeader || !authHeader.startsWith('Bearer '))
     return res.status(401).json({ message: 'Access token missing' });

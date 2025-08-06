@@ -4,8 +4,10 @@ import { connectDB } from './config/db.js';
 import authRoutes from './routes/auth.route.js'; 
 import {errorHandler} from './middleware/errorHandler.js';
 import httpLogger from './middleware/httpLogger.js';
+import auth from './middleware/auth.js';
 
 dotenv.config();
+console.log('ACCESS_TOKEN_SECRET:', process.env.JWT_SECRET, process.env.JWT_REFRESH_SECRET);
 
 const app = express();
 connectDB(); // Connect to DB
@@ -15,6 +17,16 @@ app.use(express.json());
 app.use(httpLogger)
 // Routes
 app.use('/api/auth', authRoutes);
+
+
+app.use(auth)
+
+app.get("/hello",(req,res)=>{
+res.send("hello world")
+})
+
+
+
 
 // Error Handling Middleware
 app.use(errorHandler);
