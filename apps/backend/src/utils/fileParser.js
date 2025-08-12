@@ -1,5 +1,7 @@
 import fs from "fs";
-import pdf from "pdf-parse";
+import pdf from 'pdf-parse/lib/pdf-parse.js'
+
+
 
 export async function extractTextFromFile(filePath) {
   const buffer = fs.readFileSync(filePath);

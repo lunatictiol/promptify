@@ -5,6 +5,7 @@ import authRoutes from './routes/auth.route.js';
 import {errorHandler} from './middleware/errorHandler.js';
 import httpLogger from './middleware/httpLogger.js';
 import auth from './middleware/auth.js';
+import aiRoutes from './routes/ai.route.js'
 
 dotenv.config();
 console.log('ACCESS_TOKEN_SECRET:', process.env.JWT_SECRET, process.env.JWT_REFRESH_SECRET);
@@ -21,9 +22,7 @@ app.use('/api/auth', authRoutes);
 
 app.use(auth)
 
-app.get("/hello",(req,res)=>{
-res.send("hello world")
-})
+app.use("/api/ai",aiRoutes)
 
 
 
