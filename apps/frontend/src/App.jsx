@@ -13,6 +13,7 @@ import { ToastContainer } from 'react-toastify';
 import TaglineGenerator from './pages/Tagline';
 import Article from './pages/Article';
 import Resume from './pages/Resume';
+import AuthRoute from './components/AuthRoutes';
 export default function App() {
   const { isTransitioning } = useUIStore();
   return (
@@ -23,8 +24,16 @@ export default function App() {
       {isTransitioning ? <PageTransitionOverlay /> :
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={
+            <AuthRoute>
+            <Login />
+            </AuthRoute>
+            } />
+          <Route path="/register" element={
+            <AuthRoute>
+            <Register />
+            </AuthRoute>
+            } />
           <Route path='/learnmore' element={<LearnMore />} />
           <Route
             path="/dashboard"

@@ -1,7 +1,9 @@
 import { Link } from "react-router";
 import LandingPage from "../assets/landing.png";
+import useAuthStore from "../store/authStore";
 
 export default function Landing() {
+  const { accessToken } = useAuthStore();
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-900 via-indigo-900 to-black p-8">
       {/* Hero Section */}
@@ -15,6 +17,13 @@ export default function Landing() {
             Supercharge your workflow with AI. Generate, optimize, and execute your ideas effortlessly.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            {accessToken &&
+              <Link to={"/dashboard"}>
+                <span className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+                  Go to Dashboard
+                </span>
+              </Link>
+            }
             <Link to={"/learnmore"}>
               <span className="px-6 py-3 border border-indigo-400 text-indigo-300 rounded-lg hover:bg-indigo-900/40 transition">
                 Learn More

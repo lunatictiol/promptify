@@ -5,18 +5,21 @@ import resumeImage from '../assets/resumereviewer.png'
 export default function LearnMore() {
   const tools = [
     {
+      id:"tagline",
       title: "Tagline Generator",
       desc: "Craft compelling, AI-powered taglines for your product, campaign, or brand. By analyzing your audience and tone, our AI delivers impactful taglines that resonate and grab attention instantly.",
       icon: "💡",
       image: taglineImage,
     },
     {
+       id:"article",
       title: "Article Generator",
       desc: "Create long-form, high-quality articles in seconds. Whether you need blog posts, marketing copy, or technical documentation, our AI generates content that's coherent, engaging, and SEO-friendly.",
       icon: "⚡",
       image: articleImage,
     },
     {
+       id:"resume",
       title: "Resume Reviewer",
       desc: "Get AI-powered insights to improve your resume instantly. We analyze it against job descriptions, highlighting strengths, pinpointing weaknesses, and suggesting actionable improvements to help you stand out.",
       icon: "🔗",
@@ -56,7 +59,7 @@ export default function LearnMore() {
               <h2 className="text-3xl font-bold text-white">{tool.title}</h2>
               <p className="text-gray-300 text-lg">{tool.desc}</p>
               <a
-                href={`/${tool.title.toLowerCase().replace(/\s+/g, "-")}`}
+                href={tool.id}
                 className="inline-block mt-4 px-6 py-3 bg-indigo-500 text-white rounded-lg shadow hover:bg-indigo-600 transition"
               >
                 Try Now
