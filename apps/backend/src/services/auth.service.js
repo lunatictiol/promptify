@@ -21,8 +21,8 @@ export const registerUser = async ({ username, email, password }) => {
   const refreshToken = signRefreshToken({ id: newUser._id });
   newUser.refreshToken = refreshToken;
   await newUser.save();
-
-  return { id: newUser._id, username: newUser.username, email: newUser.email,accessToken:accessToken };
+  const user={id: newUser._id, username: newUser.username, email: newUser.email}
+  return { user:user,accessToken:accessToken,refreshToken:refreshToken };
 };
 
 export const loginUser = async ({ email, password }) => {
@@ -42,7 +42,7 @@ export const loginUser = async ({ email, password }) => {
   user.refreshToken = refreshToken;
   await user.save();
 
-  return { accessToken, refreshToken };
+  return { user,accessToken, refreshToken };
 };
 
 
