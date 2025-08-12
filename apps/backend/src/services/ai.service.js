@@ -16,57 +16,17 @@ export async function generateArticle({ topic, tone = "neutral", length = "mediu
   return response.content;
 }
 
-export async function reviewResumeFile(filePath, res,role) {
-  try {
+export async function reviewResumeFile(filePath,role) {
+
     console.log("path", filePath)
     const resumeText = await extractTextFromFile(filePath);
     const model = initModel("promptify-resume");
-    console.log("data", resumeText)
+   
 
-    res.setHeader("Content-Type", "text/event-stream");
-    res.setHeader("Cache-Control", "no-cache");
-    res.setHeader("Connection", "keep-alive");
+    const response = await model.invoke(["human", `role:${role},resume:\n${resumeText}`]);
+    return response.content
 
-    const stream = await model.stream(["human", `role:${role},resume:\n${resumeText}`]);
-    let buffer = "";
-
-    for await (const chunk of stream) {
-      buffer += chunk.content;
-
-      // Check for word boundaries (space, punctuation)
-      const words = buffer.split(/(\s+)/); // includes whitespace as separate elements
-
-      while (words.length > 1) {
-        const word = words.shift(); // get the next word
-        res.write(`data: ${word}\n\n`);
-      }
-
-      // The last chunk may be an incomplete word, so keep it in buffer
-      buffer = words.join('');
-    }
-
-    // Flush the last word if any
-    if (buffer.length > 0) {
-      res.write(`data: ${buffer}\n\n`);
-    }
-
-    res.write("data: [DONE]\n\n");
-    res.end();
-  } catch (err) {
-    console.error("Resume review error:", err);
-    res.status(500).send("Error processing resume");
-  } finally {
-    // Ensure file is always deleted
-    try {
-      fs.unlink(filePath, (err) => {
-        if (err) {
-          console.error(`Error deleting file: ${err.message}`);
-        }
-      });
-    } catch (unlinkErr) {
-      console.error("Error deleting resume file:", unlinkErr);
-    }
-  }
+   
 }
 
 // --- Tagline Generation ---

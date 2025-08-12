@@ -10,7 +10,7 @@ export default function PageTransitionOverlay() {
         <AnimatePresence>
         
                 <motion.div
-                    className="fixed inset-0 z-50 bg-blend-overlay flex items-center justify-center"
+                    className="fixed inset-0 z-50 bg-blend-overlay bg-gradient-to-br from-gray-900 via-indigo-900 to-black flex items-center justify-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}

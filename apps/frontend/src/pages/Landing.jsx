@@ -1,28 +1,24 @@
 import { Link } from "react-router";
-import LandingPage from '../assets/landing.png'
+import LandingPage from "../assets/landing.png";
+
 export default function Landing() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-indigo-50 via-white to-indigo-100">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-900 via-indigo-900 to-black p-8">
       {/* Hero Section */}
-      <main className="flex flex-col-reverse lg:flex-row items-center justify-center flex-1 px-6 lg:px-20">
+      <main className="flex flex-col-reverse lg:flex-row items-center justify-center flex-1 px-6 lg:px-20 text-white">
         {/* Text Content */}
         <div className="lg:w-1/2 space-y-6 text-center lg:text-left">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight">
-            Your <span className="text-indigo-600">AI-powered</span> productivity companion
+          <h2 className="text-4xl sm:text-5xl font-bold leading-tight">
+            Your <span className="text-indigo-400">AI-powered</span> productivity companion
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-300">
             Supercharge your workflow with AI. Generate, optimize, and execute your ideas effortlessly.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-           {/* <Link>
-            <span className="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 transition">
-              Get Started
-            </span>
-            </Link> */}
             <Link to={"/learnmore"}>
-            <span className="px-6 py-3 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition">
-              Learn More
-            </span>
+              <span className="px-6 py-3 border border-indigo-400 text-indigo-300 rounded-lg hover:bg-indigo-900/40 transition">
+                Learn More
+              </span>
             </Link>
           </div>
         </div>
@@ -32,14 +28,17 @@ export default function Landing() {
           <img
             src={LandingPage}
             alt="AI Productivity"
-            className="w-full max-w-md"
+            className="w-full max-w-md rounded-xl shadow-lg"
           />
         </div>
       </main>
 
       {/* Features Section */}
-      <section id="features" className="py-16 px-6 lg:px-20 bg-white">
-        <h3 className="text-3xl font-bold text-center mb-12">Our AI Tools</h3>
+      <section
+        id="features"
+        className="py-16 px-6 lg:px-20 bg-black/30 backdrop-blur-xl rounded-2xl mt-12"
+      >
+        <h3 className="text-3xl font-bold text-center mb-12 text-white">Our AI Tools</h3>
         <div className="grid md:grid-cols-3 gap-10">
           {[
             { title: "Tagline Generator", desc: "Get AI-powered taglines instantly.", icon: "💡" },
@@ -48,16 +47,15 @@ export default function Landing() {
           ].map((feature, index) => (
             <div
               key={index}
-              className="bg-indigo-50 p-6 rounded-xl shadow hover:shadow-lg transition"
+              className="bg-white/10 p-6 rounded-xl shadow-lg hover:shadow-2xl transition border border-white/20"
             >
               <div className="text-4xl mb-4">{feature.icon}</div>
-              <h4 className="text-xl font-semibold mb-2">{feature.title}</h4>
-              <p className="text-gray-600">{feature.desc}</p>
+              <h4 className="text-xl font-semibold mb-2 text-white">{feature.title}</h4>
+              <p className="text-gray-300">{feature.desc}</p>
             </div>
           ))}
         </div>
       </section>
-
     </div>
   );
 }

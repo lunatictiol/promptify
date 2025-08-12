@@ -61,90 +61,90 @@ export default function Login() {
         loginMutation.mutate(formData);
     };
 
-    return (
-        <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-indigo-50 via-white to-indigo-100">
-            <div className="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
-                <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
-                    Login to <span className="text-indigo-600">Promptify</span>
-                </h1>
+  return (
+  <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-indigo-900 to-black">
+    <div className="bg-white/10 backdrop-blur-lg shadow-lg rounded-xl p-8 w-full max-w-md border border-white/20">
+      <h1 className="text-3xl font-bold text-center text-white mb-6">
+        Login to <span className="text-indigo-400">Promptify</span>
+      </h1>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
-
-
-                    {/* Email */}
-                    <div>
-                        <label className="block text-gray-700 font-medium mb-1">Email</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 ${errors.email
-                                ? "border-red-500 focus:ring-red-400"
-                                : "focus:ring-indigo-400"
-                                }`}
-                            placeholder="you@example.com"
-                        />
-                        <p className="h-4 text-red-500 text-sm mt-1">{errors.email || ""}</p>
-                    </div>
-
-                    {/* Password */}
-                    <div>
-                        <label className="block text-gray-700 font-medium mb-1">Password</label>
-
-                        <div className="relative">
-                            <input
-                                type={showPassword ? "text" : "password"}
-                                name="password"
-                                value={formData.password}
-                                onChange={handleChange}
-                                className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 pr-10 ${errors.password
-                                    ? "border-red-500 focus:ring-red-400"
-                                    : "focus:ring-indigo-400"
-                                    }`}
-                                placeholder="Enter your password"
-                            />
-                            <button
-                                type="button"
-                                onClick={() => setShowPassword(!showPassword)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                            >
-                                {showPassword ? <FaEyeSlash /> : <FaEye />}
-                            </button>
-                        </div>
-                        <p className="h-4 text-red-500 text-sm mt-1">{errors.password || ""}</p>
-                    </div>
-
-                    {/* Submit */}
-                    <button
-                        type="submit"
-                        disabled={loginMutation.isLoading}
-                        className="w-full py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition disabled:opacity-50"
-                    >
-                        {loginMutation.isLoading ? "Logging in..." : "Login"}
-                    </button>
-                </form>
-
-                <p className="text-center text-gray-500 text-sm mt-6">
-                    Don’t have an account?{" "}
-                    <a href="/register" className="text-indigo-600 hover:underline">
-                        Register
-                    </a>
-                </p>
-            </div>
-            <ToastContainer
-                position="top-center"
-                autoClose={1000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick={false}
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="dark"
-
-            />
+      <form onSubmit={handleSubmit} className="space-y-5">
+        {/* Email */}
+        <div>
+          <label className="block text-gray-300 font-medium mb-1">Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className={`w-full px-4 py-2 rounded-lg bg-black/30 text-white placeholder-gray-400 border focus:outline-none focus:ring-2 ${
+              errors.email
+                ? "border-red-500 focus:ring-red-400"
+                : "border-white/20 focus:ring-indigo-400"
+            }`}
+            placeholder="you@example.com"
+          />
+          <p className="h-4 text-red-400 text-sm mt-1">{errors.email || ""}</p>
         </div>
-    );
+
+        {/* Password */}
+        <div>
+          <label className="block text-gray-300 font-medium mb-1">Password</label>
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              className={`w-full px-4 py-2 rounded-lg bg-black/30 text-white placeholder-gray-400 border pr-10 focus:outline-none focus:ring-2 ${
+                errors.password
+                  ? "border-red-500 focus:ring-red-400"
+                  : "border-white/20 focus:ring-indigo-400"
+              }`}
+              placeholder="Enter your password"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200"
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
+          <p className="h-4 text-red-400 text-sm mt-1">{errors.password || ""}</p>
+        </div>
+
+        {/* Submit */}
+        <button
+          type="submit"
+          disabled={loginMutation.isLoading}
+          className="w-full py-3 bg-indigo-500 text-white rounded-lg font-medium hover:bg-indigo-600 transition disabled:opacity-50"
+        >
+          {loginMutation.isLoading ? "Logging in..." : "Login"}
+        </button>
+      </form>
+
+      <p className="text-center text-gray-400 text-sm mt-6">
+        Don’t have an account?{" "}
+        <a href="/register" className="text-indigo-400 hover:underline">
+          Register
+        </a>
+      </p>
+    </div>
+
+    <ToastContainer
+      position="top-center"
+      autoClose={1000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick={false}
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="dark"
+    />
+  </div>
+);
+
 }

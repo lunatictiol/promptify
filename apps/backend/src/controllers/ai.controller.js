@@ -35,7 +35,8 @@ export const handleReviewResume = async (req, res) => {
       return res.status(400).json({ error: 'File size exceeds 2MB limit' });
     }
 
-    await reviewResumeFile(file.path, res,role); // sends stream
+   const review =  await reviewResumeFile(file.path,role); 
+     res.status(200).json({ review });
   } catch (err) {
     console.error("Resume review controller error:", err);
     res.status(500).send("Error reviewing resume");
@@ -45,7 +46,7 @@ export const handleReviewResume = async (req, res) => {
 // --- Generate Tagline ---
 export const handleGenerateTagline = async (req, res) => {
   try {
-    await generateTagline(req.body, res); // sends stream
+    await generateTagline(req.query, res); // sends stream
   } catch (err) {
     console.error("Tagline generation error:", err);
     res.status(500).send("Error generating tagline");

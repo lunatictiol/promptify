@@ -10,29 +10,52 @@ import PageTransitionOverlay from './components/PageTransitionOverlay';
 import useUIStore from './store/uiStore';
 import LearnMore from './pages/LearnMore';
 import { ToastContainer } from 'react-toastify';
+import TaglineGenerator from './pages/Tagline';
+import Article from './pages/Article';
+import Resume from './pages/Resume';
 export default function App() {
   const { isTransitioning } = useUIStore();
   return (
     <Router>
-      <ToastContainer position='bottom-center'/>  
+      <ToastContainer position='bottom-center' />
       <Navbar />
       <PageTransitionWatcher />
-      {isTransitioning ?<PageTransitionOverlay />:
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path='/learnmore' element={<LearnMore/>}/>
-        <Route 
-          path="/dashboard" 
-          element={
+      {isTransitioning ? <PageTransitionOverlay /> :
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path='/learnmore' element={<LearnMore />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoutes>
+                <Dashboard />
+              </ProtectedRoutes>
+            }
+          />
+          <Route path='/tagline' element={
             <ProtectedRoutes>
-              <Dashboard />
+              <TaglineGenerator />
             </ProtectedRoutes>
-          } 
-        />
-      </Routes>
-}
+
+          } />
+          <Route path='/article' element={
+            <ProtectedRoutes>
+              <Article />
+            </ProtectedRoutes>
+          } />
+          <Route
+            path="/resume"
+            element={
+              <ProtectedRoutes>
+               <Resume/>
+              </ProtectedRoutes>
+            }
+          />
+        </Routes>
+        
+      }
     </Router>
   );
 }

@@ -44,12 +44,22 @@ export default function Dashboard() {
       >
         AI Tools Dashboard
       </motion.h1>
-       <DotLottieReact
-      src="https://lottie.host/b7558977-fce0-4604-9249-225c26e02645/jUh19Ljh0P.lottie"
-      loop
-      autoplay
-      style={{width:800,height:400}}
-    />
+     <motion.div
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+  whileHover={{
+    y: -8,
+    scale: 1.1 // makes it look bigger on hover
+  }}
+>
+  <DotLottieReact
+    src="https://lottie.host/b7558977-fce0-4604-9249-225c26e02645/jUh19Ljh0P.lottie"
+    loop
+    autoplay
+    style={{ width: 800, height: 400 }}
+  />
+</motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl w-full">
         {cards.map((card, index) => (
