@@ -5,15 +5,24 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import ProtectedRoutes from './components/ProtectedRoutes';
-
+import PageTransitionWatcher from './components/PageTransitionWatcher';
+import PageTransitionOverlay from './components/PageTransitionOverlay';
+import useUIStore from './store/uiStore';
+import LearnMore from './pages/LearnMore';
+import { ToastContainer } from 'react-toastify';
 export default function App() {
+  const { isTransitioning } = useUIStore();
   return (
     <Router>
+      <ToastContainer position='bottom-center'/>  
       <Navbar />
+      <PageTransitionWatcher />
+      {isTransitioning ?<PageTransitionOverlay />:
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path='/learnmore' element={<LearnMore/>}/>
         <Route 
           path="/dashboard" 
           element={
@@ -23,6 +32,7 @@ export default function App() {
           } 
         />
       </Routes>
+}
     </Router>
   );
 }

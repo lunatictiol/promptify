@@ -1,4 +1,4 @@
-import axiosClient from '../axiosClient';
+import axiosClient from '../apiClient';
 import useAuthStore from '../../store/authStore';
 
 export const register = async (formData) => {

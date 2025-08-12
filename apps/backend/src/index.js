@@ -6,12 +6,20 @@ import {errorHandler} from './middleware/errorHandler.js';
 import httpLogger from './middleware/httpLogger.js';
 import auth from './middleware/auth.js';
 import aiRoutes from './routes/ai.route.js'
+import cors from 'cors';
 
 dotenv.config();
 console.log('ACCESS_TOKEN_SECRET:', process.env.JWT_SECRET, process.env.JWT_REFRESH_SECRET);
 
 const app = express();
 connectDB(); // Connect to DB
+// Allow requests from your frontend
+app.use(cors({
+  origin: 'http://localhost:5173',
+  methods: 'GET,POST,PUT,DELETE',
+  credentials: true
+}));
+
 
 app.use(express.json());
 // Logging incoming requests
