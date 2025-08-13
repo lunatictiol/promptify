@@ -75,8 +75,25 @@ This project showcases modern web development expertise combined with state-of-t
 ---
 ## 📸 Preview
 
+**Landing page**
+
+![Alt Text](./landing-page.gif)
+
 **Dashboard**
+
 ![Alt Text](./dashboard.gif)
+
+**Article Generator**
+
+![Alt Text](./article-generator.gif)
+
+**Tagline Generator**
+
+![Alt Text](./tagline-generator.gif)
+
+**Resume Reviewer**
+
+![Alt Text](./resume-reviewer.gif)
 
 
 
