@@ -95,5 +95,24 @@ This project showcases modern web development expertise combined with state-of-t
 
 ![Alt Text](./resume-reviewer.gif)
 
+---
+## ScreenShorts
+<p>
+  
+<img src="./one.png" width="500" alt="Llama Sama">
+<img src="./two.png" width="500" alt="Llama Sama">
+</p>
+<p>
+  
+<img src="./three.png" width="500" alt="Llama Sama">
+<img src="./four.png" width="500" alt="Llama Sama">
+</p>
+<p>
 
+<img src="./five.png" width="500" alt="Llama Sama">
+<img src="./six.png" width="500" alt="Llama Sama">
+<img src="./seven.png" width="500" alt="Llama Sama">
+
+
+</p>
 
