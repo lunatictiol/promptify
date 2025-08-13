@@ -73,5 +73,10 @@ This project showcases modern web development expertise combined with state-of-t
 - Reflects ability to build **scalable, maintainable codebases** using modern JavaScript tooling and libraries.
 
 ---
+## 📸 Preview
+
+**Dashboard**
+![Alt Text](./dashboard.gif)
+
 
 
